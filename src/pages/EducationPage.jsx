@@ -1,9 +1,11 @@
-import React from 'react';
-import { GraduationCap, Award, BookOpen, Calendar } from 'lucide-react';
+import React, { useState } from 'react';
+import { GraduationCap, Award, BookOpen, Calendar, ArrowUpRight, Sparkles, ExternalLink } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
+import { EducationModal } from '../components/EducationModal';
 
 export function EducationPage() {
-  const { education, achievements, publications } = portfolioData;
+  const { personal, education, achievements, publications } = portfolioData;
+  const [selectedEdu, setSelectedEdu] = useState(null);
 
   return (
     <div className="page-wrapper section">
@@ -21,7 +23,14 @@ export function EducationPage() {
 
         <div className="education-grid">
           {education.map((item, idx) => (
-            <div key={idx} className="card education-card">
+            <div
+              key={idx}
+              className="card education-card education-card-interactive"
+              onClick={() => setSelectedEdu(item)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => e.key === 'Enter' && setSelectedEdu(item)}
+            >
               <div className="timeline-header">
                 <div>
                   <h3 className="item-role">{item.degree}</h3>
@@ -32,14 +41,31 @@ export function EducationPage() {
                     <Calendar size={14} />
                     {item.period}
                   </span>
+                  <div className="edu-arrow-badge" title="View key highlights and achievements">
+                    <ArrowUpRight size={16} />
+                  </div>
                 </div>
               </div>
 
               <p className="item-details">{item.details}</p>
-              <div className="item-grade status-badge">{item.grade}</div>
+
+              <div className="edu-card-footer">
+                <div className="item-grade status-badge">{item.grade}</div>
+                <div className="edu-view-proof-btn">
+                  <Sparkles size={13} />
+                  <span>View Key Highlights</span>
+                  <ArrowUpRight size={13} className="hint-arrow" />
+                </div>
+              </div>
             </div>
           ))}
         </div>
+
+        {/* Modal Popup */}
+        <EducationModal
+          educationItem={selectedEdu}
+          onClose={() => setSelectedEdu(null)}
+        />
 
         {/* Achievements & Research Section */}
         <div className="achievements-section-wrapper">
@@ -50,7 +76,16 @@ export function EducationPage() {
 
           <h3 className="sub-section-heading">Recognition & Applied AI Research</h3>
           <p className="section-subheading">
-            Department project awards, industry internship certificates, and published research papers.
+            Department project awards, industry internship certificates, and published research papers.{' '}
+            <a
+              href="https://www.linkedin.com/in/jaishriram-pm/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-profile-link"
+            >
+              <span>Check out my profile for more details</span>
+              <ExternalLink size={13} className="profile-link-arrow" />
+            </a>
           </p>
 
           <div className="achievements-grid">
@@ -87,6 +122,17 @@ export function EducationPage() {
                     <h5 className="achievement-title">{pub.title}</h5>
                     <div className="achievement-org mono">{pub.publisher}</div>
                     <p className="achievement-desc">{pub.description}</p>
+                    {pub.url && (
+                      <a
+                        href={pub.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="pub-click-link"
+                      >
+                        <span>Click here to view publication</span>
+                        <ExternalLink size={12} />
+                      </a>
+                    )}
                   </div>
                 ))}
               </div>
@@ -103,6 +149,81 @@ export function EducationPage() {
         .education-card {
           display: flex;
           flex-direction: column;
+        }
+
+        .education-card-interactive {
+          cursor: pointer;
+          transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                      border-color 0.25s ease,
+                      box-shadow 0.3s ease,
+                      background 0.25s ease;
+          position: relative;
+        }
+
+        .education-card-interactive:hover {
+          transform: translateY(-4px);
+          border-color: rgba(16, 185, 129, 0.45);
+          background: linear-gradient(180deg, rgba(24, 24, 27, 0.95) 0%, rgba(18, 18, 21, 0.98) 100%);
+          box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.7), 0 0 20px rgba(16, 185, 129, 0.15);
+        }
+
+        .edu-arrow-badge {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 32px;
+          height: 32px;
+          border-radius: 8px;
+          background: var(--bg-elevated);
+          border: 1px solid var(--border-color);
+          color: var(--text-muted);
+          transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+          margin-left: 0.75rem;
+        }
+
+        .education-card-interactive:hover .edu-arrow-badge {
+          background: rgba(16, 185, 129, 0.15);
+          border-color: rgba(16, 185, 129, 0.5);
+          color: #10b981;
+          transform: translate(2px, -2px) scale(1.08);
+          box-shadow: 0 0 12px rgba(16, 185, 129, 0.35);
+        }
+
+        .edu-card-footer {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-top: 0.5rem;
+          flex-wrap: wrap;
+          gap: 0.75rem;
+        }
+
+        .edu-view-proof-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.4rem;
+          font-size: 0.8rem;
+          font-weight: 600;
+          color: var(--badge-green-text);
+          background: rgba(16, 185, 129, 0.08);
+          border: 1px solid var(--badge-green-border);
+          padding: 0.3rem 0.75rem;
+          border-radius: 6px;
+          transition: all 0.25s ease;
+        }
+
+        .education-card-interactive:hover .edu-view-proof-btn {
+          background: rgba(16, 185, 129, 0.18);
+          border-color: rgba(16, 185, 129, 0.6);
+          box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
+        }
+
+        .hint-arrow {
+          transition: transform 0.25s ease;
+        }
+
+        .education-card-interactive:hover .hint-arrow {
+          transform: translate(2px, -2px);
         }
 
         .item-institution {
@@ -189,6 +310,58 @@ export function EducationPage() {
           font-size: 0.9rem;
           color: var(--text-secondary);
           line-height: 1.5;
+        }
+
+        .pub-click-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.4rem;
+          font-size: 0.8rem;
+          font-weight: 600;
+          color: var(--badge-green-text);
+          background: rgba(16, 185, 129, 0.08);
+          border: 1px solid var(--badge-green-border);
+          padding: 0.35rem 0.75rem;
+          border-radius: 6px;
+          margin-top: 0.75rem;
+          text-decoration: none;
+          transition: all 0.25s ease;
+        }
+
+        .pub-click-link:hover {
+          background: rgba(16, 185, 129, 0.18);
+          border-color: rgba(16, 185, 129, 0.6);
+          transform: translateY(-1px);
+          box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+        }
+
+        .inline-profile-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.35rem;
+          color: var(--badge-green-text);
+          font-weight: 600;
+          font-size: 0.95rem;
+          text-decoration: none;
+          border-bottom: 1px dashed var(--badge-green-border);
+          padding-bottom: 1px;
+          transition: all 0.25s ease;
+          margin-left: 0.25rem;
+        }
+
+        .inline-profile-link:hover {
+          color: #ffffff;
+          border-bottom-style: solid;
+          border-bottom-color: var(--badge-green-text);
+          text-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+        }
+
+        .profile-link-arrow {
+          transition: transform 0.25s ease;
+        }
+
+        .inline-profile-link:hover .profile-link-arrow {
+          transform: translate(2px, -2px);
         }
 
         @media (max-width: 768px) {

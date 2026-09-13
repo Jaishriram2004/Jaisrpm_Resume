@@ -15,7 +15,16 @@ export function Achievements() {
 
         <h2 className="section-heading">Achievements & Publications</h2>
         <p className="section-subheading">
-          Honors, industry awards, and published research papers.
+          Honors, industry awards, and published research papers.{' '}
+          <a
+            href="https://www.linkedin.com/in/jaishriram-pm/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-profile-link"
+          >
+            <span>Check out my profile for more details</span>
+            <ExternalLink size={13} className="profile-link-arrow" />
+          </a>
         </p>
 
         <div className="achievements-grid">
@@ -52,6 +61,17 @@ export function Achievements() {
                   <h4 className="achievement-title">{pub.title}</h4>
                   <div className="achievement-org">{pub.publisher}</div>
                   <p className="achievement-desc">{pub.description}</p>
+                  {pub.url && (
+                    <a
+                      href={pub.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="pub-click-link"
+                    >
+                      <span>Click here to view publication</span>
+                      <ExternalLink size={12} />
+                    </a>
+                  )}
                 </div>
               ))}
             </div>
@@ -115,6 +135,58 @@ export function Achievements() {
           font-size: 0.9rem;
           color: var(--text-secondary);
           line-height: 1.5;
+        }
+
+        .pub-click-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.4rem;
+          font-size: 0.8rem;
+          font-weight: 600;
+          color: var(--badge-green-text);
+          background: rgba(16, 185, 129, 0.08);
+          border: 1px solid var(--badge-green-border);
+          padding: 0.35rem 0.75rem;
+          border-radius: 6px;
+          margin-top: 0.75rem;
+          text-decoration: none;
+          transition: all 0.25s ease;
+        }
+
+        .pub-click-link:hover {
+          background: rgba(16, 185, 129, 0.18);
+          border-color: rgba(16, 185, 129, 0.6);
+          transform: translateY(-1px);
+          box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+        }
+
+        .inline-profile-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.35rem;
+          color: var(--badge-green-text);
+          font-weight: 600;
+          font-size: 0.95rem;
+          text-decoration: none;
+          border-bottom: 1px dashed var(--badge-green-border);
+          padding-bottom: 1px;
+          transition: all 0.25s ease;
+          margin-left: 0.25rem;
+        }
+
+        .inline-profile-link:hover {
+          color: #ffffff;
+          border-bottom-style: solid;
+          border-bottom-color: var(--badge-green-text);
+          text-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+        }
+
+        .profile-link-arrow {
+          transition: transform 0.25s ease;
+        }
+
+        .inline-profile-link:hover .profile-link-arrow {
+          transform: translate(2px, -2px);
         }
 
         @media (max-width: 768px) {

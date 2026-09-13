@@ -7,7 +7,7 @@ export const portfolioData = {
     location: "Bangalore, India",
     email: "jaishrirampm@gmail.com",
     phone: "+91 9361253908",
-    availability: "Available for BI, Data & Developer Roles",
+    availability: "Available for BI & Data Roles",
     github: "https://github.com/Jaishriram2004",
     leetcode: "https://leetcode.com/Jai-shri-ram",
     linkedin: "https://linkedin.com/in/jaishriram-pm",
@@ -15,7 +15,7 @@ export const portfolioData = {
   },
   stats: [
     {
-      value: "1+",
+      value: "1.5+",
       label: "Years Experience",
       detail: "Amazon & Genpact",
       link: "/experience"
@@ -64,7 +64,27 @@ export const portfolioData = {
         "Built robust SQL and SAS analytical solutions to process large-scale banking datasets for portfolio performance and risk analytics.",
         "Created interactive Tableau and Power BI dashboards, empowering senior business stakeholders with data-driven decision insights."
       ],
-      skills: ["SAS", "SQL", "Tableau", "Power BI", "Banking Analytics", "SAS Enterprise Guide"]
+      skills: ["SAS", "SQL", "Tableau", "Power BI", "Banking Analytics", "SAS Enterprise Guide"],
+      majorMilestones: [
+        {
+          title: "Python Campaign Reporting Migration",
+          category: "Architecture & Performance Optimization",
+          impact: "Workload Reduction & Speed",
+          description: "Engineered and migrated the entire campaign reporting infrastructure to Python rather than relying solely on SAS, achieving improved data optimization, faster execution, and significant reduction in computational workload."
+        },
+        {
+          title: "File Posting & Automated Data Transmission",
+          category: "Workflow Automation & Scripting",
+          impact: "90% Manual Intervention Reduction",
+          description: "Created robust Python and Shell scripting pipelines for automating file posting and data transfers, reducing manual interventions in repetitive operational tasks by 90%."
+        },
+        {
+          title: "Multi-Billion Dollar Campaign Automations (Virgin & Verizon)",
+          category: "Enterprise Client Impact",
+          impact: "8 Core Automations",
+          description: "Maintained and managed around 8 mission-critical data automations for both Virgin and Verizon enterprise clients, powering multi-billion dollar marketing campaigns and financial analytics."
+        }
+      ]
     },
     {
       id: "exp-2",
@@ -74,11 +94,65 @@ export const portfolioData = {
       location: "Chennai, India",
       type: "Internship",
       highlights: [
-        "Engineered the Kindle Pinnable Content feature using React Native and native C++ modules, enabling readers to pin, organize, and quickly reference important reading sections across active sessions.",
-        "Architected resilient cloud data synchronization routines with AWS backend services, ensuring seamless cross-device synchronization of pinned content states.",
-        "Optimized AWS-based cloud synchronization workflows and client payload structures, achieving a 40% improvement in overall application latency and performance."
+        "Architected low-latency native C++ caching and DOM/EPUB node bridging, delivering smooth 60 FPS scrolling and negligible memory overhead on resource-constrained devices.",
+        "Engineered resilient cross-device cloud synchronization protocols with AWS backend services, ensuring real-time state persistence across Kindle e-readers, iOS, and Android clients.",
+        "Optimized Kindle's core algorithm workflows (crawling, search, content retrieval) by migrating from legacy MAWS to an internal AWS cloud architecture, reducing overall execution time by 40% and eliminating two core package dependencies."
       ],
-      skills: ["React Native", "C++", "AWS", "Kindle Pinnable Content", "Cloud Synchronization", "Performance Optimization"]
+      skills: ["React Native", "C++", "AWS", "Cloud Architecture", "Performance Optimization"],
+      majorMilestones: [
+        {
+          title: "Kindle Pinnable Content Production Feature (Sole Ownership)",
+          category: "Client Engineering & Native C++ Architecture",
+          impact: "Shipped Production Feature to Kindle Readers",
+          description: "Independently architected and shipped the complete Kindle Pinnable Content experience from scratch. Built native C++ indexing bridges for fast DOM/EPUB excerpt extraction with an interactive React Native UI overlay, allowing readers to pin, reorder, and review crucial passages with zero rendering lag and sub-15ms lookup speeds."
+        },
+        {
+          title: "Real-Time Cross-Device AWS Cloud Sync Engine",
+          category: "Cloud Synchronization & Data Persistence",
+          impact: "Sub-200ms Cross-Device State Sync",
+          description: "Engineered high-concurrency cloud synchronization routines with AWS backend services to seamlessly synchronize pinned cards, bookmarks, and reader annotations in real time across mobile and dedicated e-reader hardware."
+        },
+        {
+          title: "Kindle Core Algorithm & AWS Cloud Migration",
+          category: "Architecture Migration & Cost Optimization",
+          impact: "40% Execution Reduction & Dependency Elimination",
+          description: "Optimized a high-impact workflow powering Kindle's core algorithms (including crawling, finding, and content indexing) by migrating from the legacy MAWS system to a modern internal AWS-based architecture. Reduced overall execution time by 40%, eliminated dependency on two legacy core packages, significantly reduced cloud operational costs, and elevated entire workflow maintainability."
+        }
+      ]
+    },
+    {
+      id: "exp-3",
+      role: "Research Intern",
+      company: "Samsung PRISM",
+      period: "May 2024 — October 2024",
+      location: "Remote / Bengaluru, India",
+      type: "Internship",
+      highlights: [
+        "Architected and trained a custom Multi-Head Attention Vision Transformer (ViT) model for high-precision attention-seeking behavior recognition and multimodal audio-visual pattern detection.",
+        "Curated and engineered primary datasets from 2,000+ participants, expanding the dataset to 20,000+ augmented audio-visual samples for robust attention-seeking training under diverse environments.",
+        "Conferred the prestigious Best Project Award and Excellence in Work Certificate by Samsung PRISM in recognition of outstanding model performance, technical innovation, and delivery."
+      ],
+      skills: ["Vision Transformers (ViT)", "Multi-Head Attention", "Deep Learning", "PyTorch"],
+      majorMilestones: [
+        {
+          title: "Multi-Head Attention Vision Transformer (ViT) Architecture",
+          category: "Deep Learning & Transformer Models",
+          impact: "Multimodal Attention Tracking",
+          description: "Engineered and fine-tuned a custom Vision Transformer architecture integrated with multi-head self-attention mechanisms to model complex spatial and temporal attention cues from multimodal streams with low-latency inference."
+        },
+        {
+          title: "20k+ Augmented Audio-Visual Dataset Pipeline",
+          category: "Data Engineering & Augmentation",
+          impact: "2,000+ Participants & 20k+ Samples",
+          description: "Spearheaded primary data gathering from 2,000+ individuals and engineered an automated data augmentation and balancing pipeline generating 20,000+ audio-visual training instances for attention-seeking classification."
+        },
+        {
+          title: "Samsung PRISM Best Project Award",
+          category: "Corporate Recognition & Award",
+          impact: "Best Project Award Winner",
+          description: "Conferred the Samsung PRISM Best Project Award and Excellence in Work Certificate for pioneering attention-seeking modeling, exceptional experimental benchmarking, and production-grade delivery."
+        }
+      ]
     }
   ],
   education: [
@@ -87,15 +161,35 @@ export const portfolioData = {
       institution: "PSG College of Technology",
       period: "August 2021 — July 2025",
       grade: "CGPA: 8.04 / 10.0",
-      details: "Comprehensive coursework in Data Structures, Database Systems, Software Engineering, Deep Learning, and Post-Quantum Cryptography."
+      details: "Comprehensive coursework in Data Structures, Database Systems, Software Engineering, Deep Learning, and Post-Quantum Cryptography.",
+      highlights: [
+        {
+          title: "Best Project Awardee — IT Department (2024–2025)",
+          description: "Presented the prestigious V Marappan Award by PSG Tech Alumni Association in recognition of the final year project 'Security Enhanced Resource Aware Federated Split Learning for Edge Platforms' (guided by Ms. D Dharani), adjudged as the BEST project across the B.Tech IT Programme.",
+          type: "award",
+          certificateImage: "/certificates/psg_best_project_award.jpg",
+          certificateLabel: "PSG Tech Alumni Association — Certificate of Appreciation (V Marappan Award for Best Project)"
+        },
+        {
+          title: "Winner — National Level Technical Symposium",
+          description: "Won 1st prize in the National Level Technical Symposium during the third semester, competing across algorithmic problem solving and technical presentation.",
+          type: "competition"
+        },
+        {
+          title: "Class Representative (Third Semester)",
+          description: "Elected as Class Representative for the IT cohort during the third semester, serving as key liaison for academic coordination, event planning, and student advocacy.",
+          type: "leadership"
+        }
+      ]
     }
   ],
   publications: [
     {
       title: "Ranking of post-quantum cryptography signature schemes using EDAS",
-      publisher: "DOI Publication",
+      publisher: "DOI Publication — MJEE",
       date: "March 2025",
-      description: "Research study applying the EDAS multi-criteria decision-making framework to evaluate and rank post-quantum cryptographic signature schemes."
+      description: "Research study applying the EDAS multi-criteria decision-making framework to evaluate and rank post-quantum cryptographic signature schemes.",
+      url: "https://oiccpress.com/mjee/article/view/10863/12429"
     }
   ],
   achievements: [
