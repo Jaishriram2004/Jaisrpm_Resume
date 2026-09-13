@@ -4,6 +4,8 @@ import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { CommandPalette } from './components/CommandPalette';
 import { ScrollToTop } from './components/ScrollToTop';
+import { InteractiveEffects } from './components/InteractiveEffects';
+import { AtmosphericBackground } from './components/AtmosphericBackground';
 
 import { HomePage } from './pages/HomePage';
 import { ExperiencePage } from './pages/ExperiencePage';
@@ -13,41 +15,68 @@ import { ProjectsPage } from './pages/ProjectsPage';
 import { ContactPage } from './pages/ContactPage';
 
 export default function App() {
-  const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('theme') || 'dark';
+  const [focusMode, setFocusMode] = useState(() => {
+    return localStorage.getItem('portfolio_focus_mode') === 'true';
   });
   const [paletteOpen, setPaletteOpen] = useState(false);
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-  }, [theme]);
+    // Permanent Dark Mode
+    document.documentElement.setAttribute('data-theme', 'dark');
+    localStorage.setItem('theme', 'dark');
 
-  // Global Keyboard Shortcuts (Ctrl+K or Cmd+K to toggle Palette)
+    // Focus Mode
+    document.documentElement.setAttribute('data-focus-mode', focusMode ? 'true' : 'false');
+    localStorage.setItem('portfolio_focus_mode', focusMode ? 'true' : 'false');
+  }, [focusMode]);
+
+  // Global Keyboard Shortcuts ('/' or Ctrl+K or Cmd+K to toggle Palette)
   useEffect(() => {
     const handleGlobalKeyDown = (e) => {
+      const target = e.target;
+      const isInput =
+        target &&
+        (target.tagName === 'INPUT' ||
+          target.tagName === 'TEXTAREA' ||
+          target.tagName === 'SELECT' ||
+          target.isContentEditable);
+
+      // Single forward slash '/' to open / toggle Command Palette
+      if ((e.key === '/' || (!e.shiftKey && e.code === 'Slash')) && !isInput && !e.ctrlKey && !e.metaKey && !e.altKey) {
+        e.preventDefault();
+        setPaletteOpen((prev) => !prev);
+        return;
+      }
+
+      // Ctrl+K or Cmd+K
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
         e.preventDefault();
         setPaletteOpen((prev) => !prev);
+        return;
       }
+
+      // Escape closes palette
       if (e.key === 'Escape') {
         setPaletteOpen(false);
       }
     };
+
     window.addEventListener('keydown', handleGlobalKeyDown);
     return () => window.removeEventListener('keydown', handleGlobalKeyDown);
   }, []);
 
-  const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === 'dark' ? 'light' : 'dark'));
+  const toggleFocusMode = () => {
+    setFocusMode((prev) => !prev);
   };
 
   return (
     <div className="app">
+      <AtmosphericBackground focusMode={focusMode} />
+      <InteractiveEffects focusMode={focusMode} />
       <ScrollToTop />
       <Navbar
-        theme={theme}
-        toggleTheme={toggleTheme}
+        focusMode={focusMode}
+        toggleFocusMode={toggleFocusMode}
         onOpenPalette={() => setPaletteOpen(true)}
       />
       <main>
@@ -67,8 +96,8 @@ export default function App() {
       <CommandPalette
         isOpen={paletteOpen}
         onClose={() => setPaletteOpen(false)}
-        theme={theme}
-        toggleTheme={toggleTheme}
+        focusMode={focusMode}
+        toggleFocusMode={toggleFocusMode}
       />
     </div>
   );

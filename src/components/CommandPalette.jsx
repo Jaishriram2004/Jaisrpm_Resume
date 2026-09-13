@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Terminal, X, CornerDownLeft, Sparkles } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
-export function CommandPalette({ isOpen, onClose, theme, toggleTheme }) {
+export function CommandPalette({ isOpen, onClose, focusMode, toggleFocusMode }) {
   const [input, setInput] = useState('');
   const [history, setHistory] = useState([
     { type: 'sys', text: 'Jaishriram PM CLI Command Console v1.0 [Type "help" or click quick commands below]' }
@@ -28,6 +28,22 @@ export function CommandPalette({ isOpen, onClose, theme, toggleTheme }) {
     return () => document.body.classList.remove('scroll-locked');
   }, [isOpen]);
 
+  // When palette is open, pressing '/' again closes it (toggle behavior)
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handlePaletteKeyDown = (e) => {
+      if ((e.key === '/' || (!e.shiftKey && e.code === 'Slash')) && !e.ctrlKey && !e.metaKey && !e.altKey) {
+        e.preventDefault();
+        e.stopPropagation();
+        onClose();
+      }
+    };
+
+    window.addEventListener('keydown', handlePaletteKeyDown, true);
+    return () => window.removeEventListener('keydown', handlePaletteKeyDown, true);
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   const handleCommand = (cmdStr) => {
@@ -50,7 +66,7 @@ export function CommandPalette({ isOpen, onClose, theme, toggleTheme }) {
   • skills     : Navigate to Tech Stack & Performance page
   • projects   : Navigate to Featured Projects & Simulator page
   • contact    : Navigate to Contact & Details page
-  • theme      : Toggle Dark / Light visual mode
+  • theme      : Toggle visual theme mode
   • download   : Print / Export PDF Resume
   • clear      : Clear console output log`
         });
@@ -89,8 +105,12 @@ export function CommandPalette({ isOpen, onClose, theme, toggleTheme }) {
         break;
 
       case 'theme':
-        toggleTheme();
-        newHistory.push({ type: 'output', text: `Theme toggled to ${theme === 'dark' ? 'Light' : 'Dark'} mode.` });
+      case 'focus':
+        toggleFocusMode();
+        newHistory.push({
+          type: 'output',
+          text: `Visual mode toggled.`
+        });
         break;
 
       case 'download':
@@ -173,7 +193,7 @@ export function CommandPalette({ isOpen, onClose, theme, toggleTheme }) {
         </form>
 
         <div className="palette-footer">
-          <span className="shortcut-hint mono">Shortcuts: <strong>Ctrl + K</strong> toggle • <strong>Esc</strong> close</span>
+          <span className="shortcut-hint mono">Shortcuts: Press <strong>/</strong> or <strong>Ctrl + K</strong> to toggle • <strong>Esc</strong> close</span>
         </div>
       </div>
 

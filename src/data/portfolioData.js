@@ -2,39 +2,53 @@ export const portfolioData = {
   personal: {
     name: "Jaishriram PM",
     handle: "@Jaishriram2004",
-    title: "Data Engineer & BI Specialist",
-    subtitle: "Data Engineer and Business Intelligence professional with a strong software engineering foundation from Amazon. Experienced in SQL, SAS, Python, Apache Airflow, and building scalable enterprise ETL pipelines.",
+    title: "BI Specialist & Freelance Developer",
+    subtitle: "Business Intelligence specialist and freelance developer with enterprise analytics experience at Genpact and a software engineering background from Amazon. I help teams make confident, data-driven decisions by analyzing trends, driving targeted campaigns, and building interactive dashboards. Alongside BI, I build fast, production-grade web applications and automated tools for clients with the engineering discipline gained at Amazon.",
     location: "Bangalore, India",
     email: "jaishrirampm@gmail.com",
     phone: "+91 9361253908",
-    availability: "Available for Data Engineering & SDE Roles",
+    availability: "Available for BI, Data & Developer Roles",
     github: "https://github.com/Jaishriram2004",
     leetcode: "https://leetcode.com/Jai-shri-ram",
     linkedin: "https://linkedin.com/in/jaishriram-pm",
-    bio: "Data Engineer and Business Intelligence professional skilled in analyzing large-scale banking datasets, automating data workflows, and developing analytical solutions. Strong software engineering foundation from Amazon with deep experience in building scalable ETL pipelines, database query optimization, and executive dashboards."
+    bio: "I'm driven to build the data infrastructure and analytics systems that power smarter business decisions. With hands-on experience engineering ETL pipelines, automating enterprise workflows at Genpact, and shipping production software at Amazon, I'm now looking to take on roles where I can architect scalable data platforms, design executive-grade dashboards, and bridge the gap between raw data and strategic action — whether that's as a Data Engineer building the backbone or a Business Analyst translating numbers into real-world impact. I thrive at the intersection of engineering and analytics, and I'm eager to join a team where I can own the full data lifecycle from ingestion to insight."
   },
   stats: [
-    { label: "B.Tech CGPA", value: "8.04" },
-    { label: "Performance Gain", value: "40%" },
-    { label: "Core Technologies", value: "18+" },
-    { label: "Honors & Awards", value: "2" }
+    {
+      value: "1+",
+      label: "Years Experience",
+      detail: "Amazon & Genpact",
+      link: "/experience"
+    },
+    {
+      value: "750+",
+      label: "Competitive Programming",
+      detail: "LeetCode & Algorithms",
+      link: "https://leetcode.com/Jai-shri-ram"
+    },
+    {
+      value: "4+",
+      label: "Featured Projects",
+      detail: "ETL & Distributed AI",
+      link: "/projects"
+    }
   ],
   principles: [
     {
-      title: "Scalable ETL Pipelines",
-      description: "Building automated data ingestion, validation, and transformation workflows using Apache Airflow, Python, and PostgreSQL."
+      title: "Data & Pipeline Engineering",
+      description: "Architecting resilient, automated ETL/ELT pipelines, real-time data ingestion, and scalable data warehouses using modern cloud and distributed frameworks."
     },
     {
-      title: "Data & Risk Analytics",
-      description: "Analyzing large-scale banking datasets using SQL, SAS, and building executive dashboards in Power BI and Tableau."
+      title: "Business Intelligence & Analytics",
+      description: "Designing executive-grade interactive dashboards, semantic data models, and KPI systems that transform complex data into actionable business strategy."
     },
     {
       title: "Software Engineering Rigor",
-      description: "Delivering production features at Amazon using C++, React Native, and AWS cloud synchronization optimization."
+      description: "Engineering scalable backend services, performant APIs, and maintainable software architectures with the production standards honed at Amazon."
     },
     {
-      title: "Applied AI Research",
-      description: "Investigating resource-aware split-fed deep learning frameworks and post-quantum cryptography signature schemes."
+      title: "Freelance Web & App Development",
+      description: "Designing and shipping responsive websites, dynamic full-stack web applications, and tailored digital experiences for global clients with modern UI/UX."
     }
   ],
   experience: [
@@ -60,10 +74,11 @@ export const portfolioData = {
       location: "Chennai, India",
       type: "Internship",
       highlights: [
-        "Engineered a Kindle E-Reader feature utilizing React Native and C++ with resilient cloud data synchronization.",
-        "Optimized AWS-based cloud workflows, achieving a 40% improvement in overall application latency and performance."
+        "Engineered the Kindle Pinnable Content feature using React Native and native C++ modules, enabling readers to pin, organize, and quickly reference important reading sections across active sessions.",
+        "Architected resilient cloud data synchronization routines with AWS backend services, ensuring seamless cross-device synchronization of pinned content states.",
+        "Optimized AWS-based cloud synchronization workflows and client payload structures, achieving a 40% improvement in overall application latency and performance."
       ],
-      skills: ["React Native", "C++", "AWS", "Cloud Synchronization", "Performance Optimization"]
+      skills: ["React Native", "C++", "AWS", "Kindle Pinnable Content", "Cloud Synchronization", "Performance Optimization"]
     }
   ],
   education: [
@@ -188,7 +203,7 @@ export const portfolioData = {
       metrics: ["98+ Lighthouse Score", "< 450ms Load Speed", "Vercel Edge CDN", "Responsive Modern UI"],
       tech: ["React", "Vite", "Agentic AI", "JavaScript", "CSS3", "Vercel"],
       githubUrl: "https://github.com/Jaishriram2004",
-      liveUrl: "https://client-website-theta-ivory.vercel.app/",
+      liveUrl: "https://www.labrixx.com/",
       featured: true
     }
   ]

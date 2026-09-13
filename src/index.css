@@ -33,31 +33,13 @@
   --transition-normal: 0.25s ease;
 }
 
-[data-theme="light"] {
-  --bg-primary: #fafafa;
-  --bg-surface: #ffffff;
-  --bg-elevated: #f4f4f5;
-  --bg-input: #f4f4f5;
+/* Focus Mode: Clean, distraction-free reading */
+[data-focus-mode="true"] .atmospheric-background-layer {
+  display: none !important;
+}
 
-  --border-color: rgba(0, 0, 0, 0.08);
-  --border-subtle: rgba(0, 0, 0, 0.04);
-  --border-hover: rgba(0, 0, 0, 0.25);
-
-  --text-primary: #09090b;
-  --text-secondary: #52525b;
-  --text-muted: #71717a;
-
-  --accent-primary: #09090b;
-  --accent-bg: #e4e4e7;
-  --accent-subtle: rgba(0, 0, 0, 0.04);
-
-  --badge-green-bg: rgba(5, 150, 105, 0.08);
-  --badge-green-text: #047857;
-  --badge-green-border: rgba(5, 150, 105, 0.2);
-
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 12px 0 rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 12px 32px 0 rgba(0, 0, 0, 0.12);
+[data-focus-mode="true"] .ambient-cursor-circle {
+  display: none !important;
 }
 
 /* Base Styles */
@@ -90,13 +72,16 @@ body {
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--bg-primary);
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--border-color);
   border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: var(--text-muted);
 }
@@ -110,7 +95,12 @@ body {
 }
 
 /* Typography Utilities */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 700;
   letter-spacing: -0.025em;
   color: var(--text-primary);
@@ -281,19 +271,24 @@ h1, h2, h3, h4, h5, h6 {
   html {
     font-size: 15px;
   }
+
   .container {
     padding: 0 1rem;
   }
+
   .section {
     padding: 3.5rem 0;
   }
+
   .section-heading {
     font-size: 1.65rem;
   }
+
   .section-subheading {
     font-size: 0.95rem;
     margin-bottom: 1.75rem;
   }
+
   .card {
     padding: 1.25rem;
     border-radius: 10px;
@@ -304,17 +299,21 @@ h1, h2, h3, h4, h5, h6 {
   html {
     font-size: 14px;
   }
+
   .container {
     padding: 0 0.85rem;
   }
+
   .section {
     padding: 2.75rem 0;
   }
+
   .btn {
     width: 100%;
     padding: 0.65rem 1rem;
     font-size: 0.875rem;
   }
+
   .btn-sm {
     width: auto;
     padding: 0.4rem 0.75rem;
@@ -328,25 +327,33 @@ h1, h2, h3, h4, h5, h6 {
     background-image: none !important;
     color: #000000 !important;
   }
-  .navbar, .theme-toggle, .btn, .no-print, .contact-form-container {
+
+  .navbar,
+  .theme-toggle,
+  .btn,
+  .no-print,
+  .contact-form-container {
     display: none !important;
   }
+
   .section {
     padding: 1.5rem 0 !important;
     border-bottom: 1px solid #e5e5e5 !important;
   }
+
   .card {
     border: 1px solid #d4d4d4 !important;
     background: #ffffff !important;
     box-shadow: none !important;
     break-inside: avoid;
   }
+
   .card::before {
     display: none !important;
   }
+
   a {
     text-decoration: none !important;
     color: #000000 !important;
   }
 }
-

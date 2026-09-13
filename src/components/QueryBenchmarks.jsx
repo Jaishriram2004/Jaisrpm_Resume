@@ -29,14 +29,14 @@ ORDER BY total_exposure DESC;`
     },
     {
       id: 'amazon-sync',
-      title: 'Kindle Sync Payload Optimization',
+      title: 'Kindle Pinnable Content Sync',
       context: 'Amazon — SDE Internship',
       tech: 'C++ / AWS Cloud Sync',
       beforeTime: '100% Latency Baseline',
       afterTime: '40% Reduced Latency',
       improvement: '40% Latency Drop',
       ratioPercent: 40,
-      description: 'Streamlined cloud data synchronization routines between React Native client state and AWS backend services, significantly reducing device payload sizes.',
+      description: 'Streamlined cloud data synchronization routines for the Kindle Pinnable Content feature between React Native client state and AWS backend services, significantly reducing device payload sizes.',
       sql: `// C++ AWS Cloud Sync Routine Optimization
 auto syncPayload = SyncEngine::PrepareCompressedBatch(readingLogs);
 awsClient.UploadSyncPayloadAsync(syncPayload, [](const SyncResult& result) {
